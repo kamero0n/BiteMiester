@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96a449189508d184b9d76768532fe54c, type: 3}
   m_Name: CardDogQuest
   m_EditorClassIdentifier: 
-  <id>k__BackingField: 
-  displayName: 
+  <id>k__BackingField: CardDogQuest
+  displayName: Play Cards with this Dawg
   levelRequirement: 0
   questPrereqs: []
-  questStepPrefabs: []
+  questStepPrefabs:
+  - {fileID: 8591989306582769561, guid: 5e7e93a4c52678146af5c708f54763d5, type: 3}

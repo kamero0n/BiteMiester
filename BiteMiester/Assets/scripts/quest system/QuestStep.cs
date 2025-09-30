@@ -1,16 +1,18 @@
 using UnityEngine;
 
-public class QuestStep : MonoBehaviour
+public abstract class QuestStep : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    private bool isFinished = false;
 
-    // Update is called once per frame
-    void Update()
+    protected void FinishQuestStep()
     {
-        
+        if (!isFinished)
+        {
+            isFinished = true;
+
+            // TODO - Advance the quest forward now that we've finished this step
+
+            Destroy(this.gameObject);
+        }
     }
 }

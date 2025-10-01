@@ -2,17 +2,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager _instance;
+    public static GameManager _instance { get; private set; }
 
-    public static GameManager Instance()
-    {
-        if (_instance == null)
-        {
-            Debug.LogError("game manager is null! what the!");
-        }
-
-        return _instance;
-    }
+    public QuestEvents questEvents;
 
     private void Awake()
     {
@@ -27,5 +19,8 @@ public class GameManager : MonoBehaviour
 
         // for existance of game manager through all levels if i add more
         DontDestroyOnLoad(this);
+
+        // init all things!
+        questEvents = new QuestEvents();
     }
 }

@@ -9,11 +9,53 @@ public class QuestManager : MonoBehaviour
     {
         questMap = CreateQuestMap();
 
-        Quest quest = GetQuestById("CardDogQuest");
+        // check if we are actually loading the quest correctly!
+        /*Quest quest = GetQuestById("CardDogQuest");
         Debug.Log(quest.info.displayName);
         Debug.Log(quest.info.levelRequirement);
         Debug.Log(quest.state);
-        Debug.Log(quest.CurrentStepExists());
+        Debug.Log(quest.CurrentStepExists());*/
+    }
+
+    private void OnEnable()
+    {
+        GameManager._instance.questEvents.onStartQuest += StartQuest;
+        GameManager._instance.questEvents.onAdvanceQuest += AdvanceQuest;
+        GameManager._instance.questEvents.onFinishedQuest += FinishQuest;
+    }
+
+    private void OnDisable()
+    {
+        GameManager._instance.questEvents.onStartQuest -= StartQuest;
+        GameManager._instance.questEvents.onAdvanceQuest -= AdvanceQuest;
+        GameManager._instance.questEvents.onFinishedQuest -= FinishQuest;
+    }
+
+    private void Start()
+    {
+        // broadcast the inital state of all quests on startup
+        foreach (Quest quest in questMap.Values)
+        {
+            GameManager._instance.questEvents.QuestStateChange(quest);
+        }
+    }
+
+    private void StartQuest(string id)
+    {
+        // TODO - start quest
+        Debug.Log("Start Quest: " + id);
+    }
+
+    private void AdvanceQuest(string id)
+    {
+        // TODO - advance quest
+        Debug.Log("Advance Quest: " + id);
+    }
+
+    private void FinishQuest(string id)
+    {
+        //TODO - finish quest
+        Debug.Log("Finish Quest: " + id);
     }
 
     private Dictionary<string, Quest> CreateQuestMap()
